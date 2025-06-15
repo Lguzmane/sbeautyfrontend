@@ -1,0 +1,63 @@
+/* 10.CREATE SERVICE */
+.create-service {
+  background-color: #f9e6f0;
+  padding: 20px;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.create-service-container {
+  background-color: #fff0f6;
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.create-service-container h1 {
+  text-align: center;
+  color: #c2185b;
+  margin-bottom: 20px;
+}
+
+.create-service-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.create-service-form input,
+.create-service-form textarea,
+.create-service-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.create-service-form .form-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.create-service-form label {
+  font-weight: bold;
+  color: #c2185b;
+}
+
+.create-service-form .btn-primary {
+  background-color: #c2185b;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.create-service-form .btn-primary:hover {
+  background-color: #d81b60;
+}

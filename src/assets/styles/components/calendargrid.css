@@ -1,0 +1,172 @@
+/* CALENDAR GRID */
+/* CALENDAR GRID */
+:root {
+  --primary-color: #f472b6;       /* rosado suave */
+  --secondary-color: #fde2ec;     /* lila pastel */
+  --highlight-color: #ec4899;     /* rosado fucsia */
+  --text-color: #333;
+  --background-color: #fff6fa;    /* fondo super suave */
+  --reserved-color: #d1f0d1;
+  --selected-color: var(--primary-color);  /* color para bloques seleccionados y cabecera */
+}
+
+/* Contenedor principal */
+.calendar-container {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 15px 10px;
+  font-family: Arial, sans-serif;
+  background-color: var(--secondary-color);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* Controles AM/PM */
+.ampm-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+
+.btn-toggle {
+  padding: 8px 20px;
+  border: 1px solid var(--primary-color);
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.btn-toggle.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Cabecera de días con flechas */
+.days-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.days-container {
+  display: flex;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  padding: 8px 0;
+  gap: 4px;
+  justify-content: center;
+}
+
+.day-card {
+  min-width: 90px;
+  padding: 6px 5px;
+  background: #fbc4e4; /* Rosado clarito */
+  border: 1px solid var(--primary-color); /* borde rosado */
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, color 0.3s;
+}
+
+.day-card:hover {
+  background: var(--highlight-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.day-card.selected {
+  background: var(--selected-color);
+  color: white;
+  font-weight: bold;
+}
+
+/* Nombre y fecha del día */
+.day-name {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.day-date {
+  font-size: 10px;
+  color: var(--text-color);
+  margin-top: 2px;
+}
+
+/* Flechas de navegación */
+.nav-arrow {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--highlight-color);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s;
+  margin: 0 5px;
+}
+
+.nav-arrow:hover {
+  background: rgba(244, 114, 182, 0.1);
+  transform: scale(1.1);
+}
+
+/* Cuerpo del calendario */
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  padding: 5px;
+  gap: 2px;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: -6px;
+}
+
+/* Filas de horarios */
+.time-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* Bloques horarios */
+.time-slot {
+  min-width: 90px;
+  height: 25px;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  text-align: center;
+  line-height: 25px;
+  font-size: 12px;
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.time-slot:hover {
+  background: var(--highlight-color);
+  color: white;
+}
+
+.time-slot.selected {
+  background: var(--selected-color);
+  color: white;
+  font-weight: bold;
+}
+
+.time-slot.reserved {
+  background: var(--reserved-color);
+  color: #2e7d32;
+  font-weight: bold;
+}

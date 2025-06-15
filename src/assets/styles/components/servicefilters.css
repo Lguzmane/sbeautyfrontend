@@ -1,0 +1,58 @@
+/* SERVICE FILTERS */
+.service-filters {
+  display: grid;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.service-filters select,
+.search-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilos para el buscador de comunas */
+.comuna-filter {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.search-container {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  background: white;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.region {
+  color: #666;
+  font-size: 0.8em;
+}
+
+/* Estilo para grupos en el select */
+optgroup {
+  font-weight: bold;
+  color: #333;
+}

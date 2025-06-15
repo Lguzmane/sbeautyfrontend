@@ -1,0 +1,255 @@
+/* 1. HOME GENERAL */
+.home {
+  background-color: #f9e6f0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* HERO */
+.home-hero {
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #ff69b4; 
+  padding: 40px 20px;         
+  border-radius: 0;        
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  color: white;               
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #fdfdfd;             
+  margin-bottom: 20px;
+}
+
+.home-search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* FILTROS MÁS ANCHOS Y PERSONALIZADOS SOLO EN HOME */
+.filters-home .autocomplete-input-wrapper {
+  width: 100%;
+  max-width: 220px;
+}
+
+.filters-home .autocomplete-input-field {
+  width: 100%;
+  padding: 22px 16px;
+  font-size: 16px;
+  border-radius: 0px;
+  border: 1px solid #ccc;
+  background-color: #fff;    
+}
+
+.filters-home select[name="lugar"],
+.filters-home select[name="fecha"] {
+  display: none !important;
+}
+
+/* BOTÓN */
+.btn-primary {
+  background-color: #c2185b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #d81b60;
+}
+
+/* CATEGORÍAS */
+.home-categories {
+  text-align: center;
+  margin: 25px 20px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: #c2185b;
+  margin-bottom: 20px;
+}
+
+.category-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.category-item {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #c2185b;
+  font-weight: 500;
+  cursor: default;
+}
+
+
+/* CARRUSEL DE SERVICIOS */
+.home-carousel {
+  margin-bottom: 40px;
+  padding: 0 200px;
+  text-align: center;
+}
+
+.carousel-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+/* TARJETAS DE SERVICIOS SOLO EN HOME */
+.home-carousel .service-card {
+  flex: 0 0 auto;
+  width: 270px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: left;
+  transition: transform 0.2s ease;
+  margin-right: 16px;
+}
+
+.home-carousel .service-card:hover {
+  transform: scale(1.03);
+}
+
+.home-carousel .service-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.home-carousel .service-info {
+  padding: 10px 0;
+}
+
+.home-carousel .service-info h3 {
+  font-size: 1rem;
+  color: #c2185b;
+  margin: 10px 0 4px;
+}
+
+.home-carousel .service-info p {
+  font-size: 0.8rem;
+  color: #555;
+  margin: 3px 0;
+}
+
+
+/* SECCIÓN PROFESIONALES */
+.home-pro-section {
+  background-color: #fff;
+  padding: 40px 20px;
+  margin: 40px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  max-width: 885px;
+}
+
+.home-pro-container {
+  max-width: 850px; /* Puedes ajustar este valor */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.pro-img-placeholder {
+  background-color: #f3cfe1;
+  width: 400px;
+  height: 240px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.home-providers-cta {
+  flex-shrink: 0;
+  width: 400px; /* IGUAL A LA IMAGEN PARA SIMETRÍA */
+}
+
+
+.home-providers-cta p {
+  margin: 15px 0;
+  color: #555;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* Botón pequeño y estilizado */
+.home-providers-cta .btn-primary {
+  padding: 8px 18px;
+  font-size: 14px;
+  border-radius: 8px;
+  margin-top: 10px;
+  display: inline-block;
+  text-align: center;
+}
+
+
+
+/* TIPS PARA CLIENTAS */
+.home-client-tips-section {
+  background-color: #fff0f6;
+  padding: 40px 20px;
+  margin: 40px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 885px;
+}
+
+.home-client-container {
+  max-width: 850px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.home-client-tips {
+  width: 400px; /* Simétrico con la imagen */
+}
+
+.tips-list {
+  list-style: disc;
+  padding-left: 20px;
+  color: #444;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.client-img-placeholder {
+  background-color: #f3cfe1;
+  width: 400px;
+  height: 240px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}

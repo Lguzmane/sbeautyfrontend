@@ -1,0 +1,172 @@
+{
+  "categorias": [
+    {
+      "nombre": "Cortes y Peinados",
+      "servicios": [
+        "Corte de pelo mujer",
+        "Corte de pelo hombre",
+        "Corte de pelo niño",
+        "Corte con tijeras",
+        "Corte máquina",
+        "Degradé",
+        "Peinado para evento",
+        "Peinado novia",
+        "Tratamiento capilar",
+        "Corte + lavado + secado"
+      ]
+    },
+    {
+      "nombre": "Coloración",
+      "servicios": [
+        "Tinte completo",
+        "Reflejos",
+        "Balayage",
+        "Mechas californianas",
+        "Color fantasía",
+        "Decoloración",
+        "Matizado",
+        "Retoque raíces",
+        "Baño de color",
+        "Tinte semipermanente"
+      ]
+    },
+    {
+      "nombre": "Manicura y Pedicura",
+      "servicios": [
+        "Manicura básica",
+        "Pedicura básica",
+        "Esmaltado tradicional",
+        "Esmaltado semipermanente",
+        "Uñas acrílicas",
+        "Uñas de gel",
+        "Uñas polygel",
+        "Esculpidas",
+        "Retoque uñas",
+        "Remoción de esmalte",
+        "Tratamiento para cutículas",
+        "Pedicura spa"
+      ]
+    },
+    {
+      "nombre": "Maquillaje",
+      "servicios": [
+        "Maquillaje social",
+        "Maquillaje novia",
+        "Maquillaje artístico",
+        "Maquillaje para fotos",
+        "Maquillaje para eventos",
+        "Clases de automaquillaje",
+        "Maquillaje HD",
+        "Maquillaje airbrush",
+        "Maquillaje caracterización"
+      ]
+    },
+    {
+      "nombre": "Depilación",
+      "servicios": [
+        "Depilación cera",
+        "Depilación hilo",
+        "Depilación láser facial",
+        "Depilación láser cuerpo completo",
+        "Depilación masculina",
+        "Depilación cejas",
+        "Depilación bigote",
+        "Depilación axilas",
+        "Depilación brazos",
+        "Depilación piernas",
+        "Depilación bikini",
+        "Depilación brasileña"
+      ]
+    },
+    {
+      "nombre": "Tratamientos Faciales",
+      "servicios": [
+        "Limpieza facial profunda",
+        "Hidratación facial",
+        "Peeling químico",
+        "Radiofrecuencia facial",
+        "Microdermoabrasión",
+        "Dermaplaning",
+        "Tratamiento acné",
+        "Tratamiento antiage",
+        "Mascarillas faciales",
+        "Tratamiento de ojeras",
+        "Carboxiterapia facial",
+        "Plasma rico en plaquetas"
+      ]
+    },
+    {
+      "nombre": "Masajes y Spa",
+      "servicios": [
+        "Masaje relajante",
+        "Masaje descontracturante",
+        "Masaje reductivo",
+        "Drenaje linfático",
+        "Masaje con piedras calientes",
+        "Masaje deportivo",
+        "Tratamiento spa completo",
+        "Exfoliación corporal",
+        "Baño de vapor",
+        "Tratamiento anticelulítico",
+        "Maderoterapia",
+        "Vela slim"
+      ]
+    },
+    {
+      "nombre": "Extensiones y Postizos",
+      "servicios": [
+        "Extensiones de cabello",
+        "Extensiones de pestañas pelo a pelo",
+        "Lifting de pestañas",
+        "Tinte de pestañas",
+        "Microblading cejas",
+        "Diseño de cejas",
+        "Laminado de cejas",
+        "Pelucas oncológicas",
+        "Postizos para cabello"
+      ]
+    },
+    {
+      "nombre": "Tratamientos Corporales",
+      "servicios": [
+        "Cavitación",
+        "Presoterapia",
+        "Radiofrecuencia corporal",
+        "Carboxiterapia corporal",
+        "Tratamiento para estrías",
+        "Reducción de medidas",
+        "Moldeamiento corporal",
+        "Tratamiento postparto",
+        "Terapia de vacío",
+        "Body up"
+      ]
+    },
+    {
+      "nombre": "Servicios Especiales",
+      "servicios": [
+        "Maquillaje para televisión",
+        "Caracterización para cine",
+        "Tatuaje temporal",
+        "Henna artístico",
+        "Barbería clásica",
+        "Afeitado tradicional",
+        "Tratamiento para caballeros",
+        "Servicio a domicilio",
+        "Servicio para eventos",
+        "Asesoría de imagen"
+      ]
+    }
+  ],
+  "servicios_populares": [
+    "Corte de pelo mujer",
+    "Manicura semipermanente",
+    "Maquillaje social",
+    "Limpieza facial",
+    "Extensiones de pestañas",
+    "Depilación brasileña",
+    "Masaje relajante",
+    "Balayage",
+    "Microblading cejas",
+    "Uñas acrílicas"
+  ]
+}

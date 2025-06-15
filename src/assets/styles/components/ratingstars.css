@@ -1,0 +1,24 @@
+/* RATING STARS */
+.rating-stars {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  line-height: 1;
+}
+
+.star {
+  color: #ffcc00;
+  font-size: 15px;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.star.empty {
+  color: #ddd;
+}
+
+.provider-rating {
+  display: flex;
+  align-items: baseline; 
+  gap: 6px;
+}

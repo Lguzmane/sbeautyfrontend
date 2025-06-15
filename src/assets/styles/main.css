@@ -1,0 +1,42 @@
+/* MAIN STYLES */
+
+/* COMPONENTES */
+@import './components/calendargrid.css';
+@import './components/footer.css';
+@import './components/header.css';
+@import './components/historyitem.css';
+@import './components/loginform.css';
+@import './components/providercard.css';
+@import './components/ratingstars.css';
+@import './components/registerform.css';
+@import './components/servicecard.css';
+@import './components/servicefilters.css';
+
+/* PÁGINAS */
+@import './pages/booking.css';
+@import './pages/cart.css';
+@import './pages/createservice.css';
+@import './pages/home.css';
+@import './pages/login.css';
+@import './pages/profile.css';
+@import './pages/register.css';
+@import './pages/schedule.css';
+@import './pages/search.css';
+@import './pages/servicedetail.css';
+
+/* GENERALES */
+@import './general.css';
+
+
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

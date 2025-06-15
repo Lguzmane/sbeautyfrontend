@@ -1,0 +1,287 @@
+/* PROVIDER CARD*/
+.provider-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  margin: -2px auto;
+  max-width: 1200px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.provider-content {
+  display: flex;
+  flex: 1;
+}
+
+.provider-left {
+  flex: 0 0 100px;
+  margin-right: 16px;
+}
+
+.provider-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.provider-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.provider-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.provider-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.provider-service {
+  font-size: 15px;
+  color: #e91e63; /* tono rosado llamativo */
+  font-weight: 600;
+  margin: 2px 0;
+}
+
+.badge {
+  font-size: 11px;
+  padding: 2px 6px;
+  background-color: #ffe066;
+  color: #333;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.provider-rating {
+  display: flex;
+  align-items: center;
+  font-size: 8px;
+  color: #4caf50;
+  margin: 2px 0;
+  gap: 4px;
+}
+
+.rating-count {
+  font-size: 8px;
+  color: #777;
+}
+
+.provider-price {
+  font-size: 12px;
+  color: #888;
+  font-weight: normal;
+  margin: 2px 0;
+}
+
+.provider-location,
+.provider-attention {
+  font-size: 13px;
+  color: #444;
+  margin: 2px 0;
+}
+
+.btn-ver-perfil {
+  align-self: flex-start;
+  background-color: #f48fb1; /* Barbie Pink */
+  color: white;
+  padding: 5px 12px;
+  font-size: 13px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 6px;
+  transition: background-color 0.3s;
+}
+
+.btn-ver-perfil:hover {
+  background-color: #ec407a;
+}
+
+
+.provider-portfolio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  margin-left: 15px;
+}
+
+.portfolio-box {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.provider-card {
+  position: relative;
+}
+
+.favorite-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  cursor: pointer;
+  font-size: 1.4rem;
+  background-color: white;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* === VISTA COMPACTA === */
+/* === VISTA COMPACTA CON ANCHOS FIJOS === */
+.provider-card.compact {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 600px;
+  margin: 16px auto;
+  box-sizing: border-box;
+}
+
+/* === (1) FOTO PERFIL === */
+.provider-card.compact .provider-left {
+  width: 60px;
+  margin-left: 15px;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.provider-center {
+  flex: 1;
+  min-width: 0;
+}
+
+.provider-card.compact .provider-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+/* === (2) INFORMACIÓN CENTRAL === */
+.provider-card.compact .provider-center {
+  width: calc(100% - 180px); /* 60 (foto) + 90 (portfolio) + margen */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.provider-card.compact .provider-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.provider-card.compact .provider-name {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.provider-card.compact .badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  background-color: #ffe066;
+  color: #333;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.provider-card.compact .provider-service {
+  font-size: 14px;
+  color: #e91e63;
+  font-weight: 600;
+}
+
+.provider-card.compact .provider-rating {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.provider-card.compact .btn-ver-perfil {
+  background-color: #f48fb1;
+  color: white;
+  padding: 4px 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+/* === (3) PORTAFOLIO === */
+.provider-card.compact .provider-portfolio {
+  width: 130px;
+  height: 130px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-left: 0px;
+  margin-right: 25px;
+}
+
+.provider-card.compact .portfolio-box {
+  width: 100%;
+  height: 100%;
+}
+
+.provider-card.compact .portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === (4) CORAZÓN FAVORITO === */
+.provider-card.compact .favorite-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 1.2rem;
+  background-color: white;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 3;
+}

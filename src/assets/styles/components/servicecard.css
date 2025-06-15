@@ -1,0 +1,126 @@
+/* SERVICE CARD */
+.service-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 250px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.service-info {
+  padding: 15px;
+}
+
+.service-info h3 {
+  margin-top: 0;
+  color: #c2185b;
+}
+
+.service-info p {
+  margin: 5px 0;
+}
+
+.service-info .btn-primary {
+  margin-top: 10px;
+  background-color: #c2185b;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.service-info .btn-primary:hover {
+  background-color: #d81b60;
+}
+
+/* COMPACTA SERVICE CARD */
+/* === COMPACTA SERVICE CARD === */
+.service-card.compact {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background-color: white;
+  border: 1px solid #f48fb1;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  margin: 12px auto;
+}
+
+/* Contenedor interior (imagen + texto) */
+.service-card.compact .service-compact-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+/* Imagen del servicio */
+.service-card.compact .service-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  flex-shrink: 0;
+}
+
+/* Texto de la tarjeta */
+.service-card.compact .service-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.service-card.compact .service-text h3 {
+  font-size: 14px; /* antes era 16px */
+  margin: 0 0 4px;
+  color: #d81b60;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.service-card.compact .service-text p {
+  font-size: 13px;  /* antes era 14px */
+  margin: 0;
+  color: #444;
+  line-height: 1.2;
+}
+
+.service-card.compact .btn-primary.small {
+  font-size: 12px;
+  padding: 6px 12px;
+  background-color: #d81b60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: fit-content;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.service-card.compact .btn-primary.small:hover {
+  background-color: #c2185b;
+}

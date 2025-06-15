@@ -1,0 +1,107 @@
+/* 3.SERVICE DETAIL */
+.service-detail {
+  background-color: #f9e6f0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-carousel {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.carousel-image {
+  flex: 0 0 auto;
+  width: 120px;
+  height: 120px;
+  background-color: #fff0f6;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.carousel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-info {
+  background-color: #fff0f6;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.proveedor-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.proveedor-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff0f6;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.proveedor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.proveedor-details {
+  flex: 1;
+}
+
+.proveedor-details h2 {
+  color: #c2185b;
+  margin-bottom: 8px;
+}
+
+.proveedor-details p {
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.descripcion h3 {
+  color: #c2185b;
+  margin-top: 15px;
+}
+
+.descripcion p {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.reservar-button {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.btn-primary {
+  background-color: #c2185b;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #d81b60;
+}

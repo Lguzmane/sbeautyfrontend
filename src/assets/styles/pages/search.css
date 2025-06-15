@@ -1,0 +1,155 @@
+/* SEARCH */
+/* ========================
+   SEARCH ZONA COMPLETA
+======================== */
+
+/* ==== SECCIÓN GENERAL DE BÚSQUEDA ==== */
+.search {
+  background-color: #f9e6f0;
+  padding: 40px 60px;
+}
+
+.search h1 {
+  color: #c2185b;
+  margin-bottom: 10px;
+}
+
+.search-layout {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.search-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+/* ==== FILTROS ==== */
+.service-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+/* Autocomplete */
+.autocomplete-input-wrapper {
+  position: relative;
+  width: 160px;
+}
+
+.autocomplete-input-field {
+  width: 100%;
+  height: 36px;
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  color: #333;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.autocomplete-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-size: 13px;
+  font-family: 'Inter', sans-serif; /* o cambia por la que uses */
+  color: #444;
+}
+
+.suggestion-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+.suggestion-item.no-match {
+  font-style: italic;
+  color: #999;
+  cursor: default;
+}
+
+/* Selects */
+select[name="lugar"],
+select[name="fecha"] {
+  width: 160px;
+  background-color: #ffe1ec;
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  color: #333;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+/* Botón */
+.btn-primary {
+  padding: 10px 16px;
+  background-color: #c2185b;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #ad1457;
+}
+
+/* ==== RESULTADOS Y MAPA ==== */
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.search-map {
+  flex: 1;
+  background-color: #fff0f6;
+  padding: 20px;
+  border-radius: 20px;
+  height: fit-content;
+}
+
+.search-map h2 {
+  text-align: center;
+  color: #c2185b;
+  margin-bottom: 10px;
+}
+
+.map-placeholder {
+  background-color: white;
+  border: 2px dashed #c2185b;
+  height: 360px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}

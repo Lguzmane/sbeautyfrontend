@@ -1,0 +1,138 @@
+/* 12.CART */
+.cart {
+  background-color: #f9e6f0;
+  padding: 20px;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cart-container {
+  background-color: #fff0f6;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.cart-container h1 {
+  text-align: center;
+  color: #c2185b;
+  margin-bottom: 20px;
+}
+
+/* Ítems del carrito */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  background-color: white;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.item-details h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #c2185b;
+}
+
+.item-details p {
+  margin: 4px 0;
+  font-size: 12px;
+  color: var(--text-color);
+}
+
+.btn-eliminar {
+  background: none;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-eliminar:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Cupón */
+.cart-coupon {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-coupon label {
+  font-size: 12px;
+  color: #c2185b;
+}
+
+.cart-coupon input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-aplicar {
+  background-color: #c2185b;
+  color: white;
+  padding: 5px 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-aplicar:hover {
+  background-color: #d81b60;
+}
+
+/* Resumen */
+.cart-summary {
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.summary-line.total {
+  font-weight: bold;
+  color: #c2185b;
+}
+
+/* Botón de pagar */
+.btn-pagar {
+  background-color: #c2185b;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.btn-pagar:hover {
+  background-color: #d81b60;
+}
