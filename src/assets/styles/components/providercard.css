@@ -162,14 +162,14 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 16px;
+  padding: 12px;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 600px;
-  margin: 16px auto;
+  margin: 1px auto;
   box-sizing: border-box;
 }
 
@@ -177,7 +177,7 @@
 .provider-card.compact .provider-left {
   width: 60px;
   margin-left: 15px;
-  margin-right: 20px;
+  margin-right: 40px;
   flex-shrink: 0;
 }
 
@@ -187,8 +187,8 @@
 }
 
 .provider-card.compact .provider-photo {
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #ccc;
@@ -196,7 +196,7 @@
 
 /* === (2) INFORMACIÓN CENTRAL === */
 .provider-card.compact .provider-center {
-  width: calc(100% - 180px); /* 60 (foto) + 90 (portfolio) + margen */
+  width: calc(100% - 140px); 
   display: flex;
   flex-direction: column;
   gap: 4px;

@@ -4,7 +4,8 @@ import { useCart } from '../context/CartContext.jsx';
 const Cart = () => {
   const { cartItems, eliminarDelCarrito } = useCart();
 
-  const subtotal = cartItems.reduce((total, item) => total + item.precio, 0);
+  // 🔧 Aseguramos que todos los precios sean números
+  const subtotal = cartItems.reduce((total, item) => total + Number(item.precio), 0);
 
   const [descuento, setDescuento] = useState(0);
   const [codigoCupon, setCodigoCupon] = useState('');
@@ -38,7 +39,7 @@ const Cart = () => {
                 <div key={item.id} className="cart-item">
                   <div className="item-details">
                     <h3>{item.nombre}</h3>
-                    <p>${item.precio.toLocaleString()}</p>
+                    <p>${Number(item.precio).toLocaleString()}</p>
                     <button
                       className="btn-eliminar"
                       onClick={() => eliminarDelCarrito(item.id)}

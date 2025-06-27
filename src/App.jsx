@@ -29,6 +29,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/:profileId" element={<Profile />} />
+          <Route path="/provider/:profileId" element={<Profile />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/create-service" element={<CreateService />} />
           <Route path="/schedule" element={<Schedule />} />

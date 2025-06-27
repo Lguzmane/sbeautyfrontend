@@ -3,17 +3,16 @@ import { AuthContext } from '../context/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
-  const { login } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validaciones básicas
     if (!email.includes('@')) {
       setError('El correo electrónico no es válido.');
       return;
@@ -24,11 +23,33 @@ const LoginForm = () => {
       return;
     }
 
-    // Si todo está bien
     setError('');
-    login(email, password);  // Simula el login
-    console.log(`Usuario autenticado: ${email}`);
-    navigate('/');  // Redirige al home después del login
+
+    try {
+      const response = await fetch('http://localhost:3000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || 'Error al iniciar sesión.');
+        return;
+      }
+
+      // Guardar usuario y token en localStorage
+      setUser(data.user);
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      console.log('Usuario logueado:', data.user);
+      navigate('/');
+
+    } catch (err) {
+      console.error('Error en login:', err);
+      setError('Error de conexión con el servidor.');
+    }
   };
 
   return (

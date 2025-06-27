@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react';  
 import RatingStars from "../RatingStars.jsx";
 import profileDefault from "../../assets/images/profiledefaultphoto.png";
 
-const ProfileHeader = ({ editableData, isEditing, handleChange, handleEditProfile, handleSaveProfile }) => {
+const ProfileHeader = ({ editableData, isEditing, handleChange, handleEditProfile, handleSaveProfile, isOwnProfile }) => {
   return (
     <div className="profile-header">
       <div className="profile-photo-container">
@@ -11,7 +11,7 @@ const ProfileHeader = ({ editableData, isEditing, handleChange, handleEditProfil
           alt="Foto de perfil"
           className="portfolio-photo"
         />
-        {isEditing && (
+        {isEditing && isOwnProfile && (
           <button className="btn-edit-photo">Cambiar foto</button>
         )}
       </div>
@@ -23,7 +23,9 @@ const ProfileHeader = ({ editableData, isEditing, handleChange, handleEditProfil
           </>
         ) : (
           <>
-            <h1 className="profile-name">{editableData.nombre}</h1>
+            <h1 className="profile-name">
+              {`${editableData.nombre} ${editableData.apellido_paterno || ''} ${editableData.apellido_materno || ''}`.trim()}
+            </h1>
             <p className="profile-role">{editableData.categoria || 'Profesional'}</p>
           </>
         )}
@@ -32,20 +34,67 @@ const ProfileHeader = ({ editableData, isEditing, handleChange, handleEditProfil
 
         <div className="profile-location-info">
           <p className="modalidad">Atiende en: {editableData.locacion || 'No disponible'}</p>
-          <p className="profile-address"><strong>Dirección:</strong> {isEditing ? <input type="text" name="direccion" value={editableData.direccion || ''} onChange={handleChange} className="input-edit" /> : editableData.direccion || 'No disponible'}</p>
-          <p className="profile-commune"><strong>Comuna:</strong> {isEditing ? <input type="text" name="comuna" value={editableData.comuna || ''} onChange={handleChange} className="input-edit" /> : editableData.comuna || 'No disponible'}</p>
-          <p className="proxima-fecha"><strong>Próxima fecha disponible:</strong> {isEditing ? <input type="text" name="proximaFecha" value={editableData.proximaFecha || ''} onChange={handleChange} className="input-edit" /> : editableData.proximaFecha || 'No disponible'}</p>
+          <p className="profile-address">
+            <strong>Dirección:</strong>{' '}
+            {isEditing ? (
+              <input
+                type="text"
+                name="direccion"
+                value={editableData.direccion || ''}
+                onChange={handleChange}
+                className="input-edit"
+              />
+            ) : (
+              editableData.direccion || 'No disponible'
+            )}
+          </p>
+          <p className="profile-commune">
+            <strong>Comuna:</strong>{' '}
+            {isEditing ? (
+              <input
+                type="text"
+                name="comuna"
+                value={editableData.comuna || ''}
+                onChange={handleChange}
+                className="input-edit"
+              />
+            ) : (
+              editableData.comuna || 'No disponible'
+            )}
+          </p>
+          <p className="proxima-fecha">
+            <strong>Próxima fecha disponible:</strong>{' '}
+            {editableData.proxima_fecha
+              ? new Date(editableData.proxima_fecha).toLocaleDateString('es-CL', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })
+              : 'No disponible'}
+          </p>
         </div>
 
         <div className="chip-container">
           <p className="chip">Horarios: Lu, Ma, Mi, Ju, Vi, Sá, Do</p>
           <br />
-          <p className="chip">Sitio web: {editableData.sitioWeb || 'No disponible'}</p>
+          <p className="chip">
+            Sitio web:{' '}
+            {editableData.sitio_web ? (
+              <a href={editableData.sitio_web} target="_blank" rel="noopener noreferrer">
+                {editableData.sitio_web}
+              </a>
+            ) : (
+              'No disponible'
+            )}
+          </p>
         </div>
 
-        <button className="btn-primary edit-btn" onClick={isEditing ? handleSaveProfile : handleEditProfile}>
-          {isEditing ? 'Guardar Perfil' : 'Editar Perfil'}
-        </button>
+        {isOwnProfile && (
+          <button className="btn-primary edit-btn" onClick={isEditing ? handleSaveProfile : handleEditProfile}>
+            {isEditing ? 'Guardar Perfil' : 'Editar Perfil'}
+          </button>
+        )}
       </div>
     </div>
   );

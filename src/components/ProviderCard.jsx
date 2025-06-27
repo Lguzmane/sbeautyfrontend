@@ -19,10 +19,9 @@ const ProviderCard = ({ provider, compact = false, onToggleFavorite }) => {
     portafolioImgs.push(imageDefault);
   }
 
-  const isFavorite = provider.isFavorite; // o evalúa si está en favoritos según tus datos
-
+  const isFavorite = provider.isFavorite; 
   const handleFavoriteClick = (e) => {
-    e.stopPropagation(); // Evita que el clic también active el onClick de la card
+    e.stopPropagation(); 
     if (onToggleFavorite) {
       onToggleFavorite(provider.id);
     }
@@ -51,7 +50,9 @@ return (
         <div className="provider-center">
           <div className="provider-header">
             {provider.destacado && <span className="badge">FIRST CLASS</span>}
-            <h3 className="provider-name">{provider.nombre}</h3>
+            <h3 className="provider-name">
+  {`${provider.nombre} ${provider.apellido_paterno || ''}`.trim()}
+</h3>
           </div>
 
           {provider.categoria && (

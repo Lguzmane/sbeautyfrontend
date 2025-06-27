@@ -1,39 +1,88 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import ProviderCard from '../components/ProviderCard.jsx';
 import ServiceFilters from '../components/ServiceFilters.jsx';
 
-const Search = () => {
-  const [filters, setFilters] = useState({
-    servicio: '',
-    comuna: '',
-    lugar: '',
-    fecha: ''
-  });
+const API_BASE_URL = 'http://localhost:3000/api';
 
-  const providers = [
-    {
-      id: 1,
-      nombre: 'María Fernández',
-      categoria: 'Manicurista',
-      rating: 4,
-      comuna: 'Santiago Centro',
-      lugarAtencion: ['Local'],
-      disponibilidad: 'Hoy',
-    },
-    {
-      id: 2,
-      nombre: 'Lucía Rojas',
-      categoria: 'Estilista',
-      rating: 5,
-      comuna: 'Providencia',
-      lugarAtencion: ['Domicilio'],
-      disponibilidad: 'Próximos 3 días',
-    },
-  ];
+const Search = () => {
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search);
+  const initialFilters = {
+    servicio: queryParams.get('servicio') || '',
+    comuna: queryParams.get('comuna') || '',
+    lugar: queryParams.get('lugar') || '',
+    fecha: queryParams.get('fecha') || ''
+  };
+
+  const [filters, setFilters] = useState(initialFilters);
+  const [profesionales, setProfesionales] = useState([]);
+  const [resultadosFiltrados, setResultadosFiltrados] = useState([]);
+
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/usuarios/profesionales`)
+      .then(res => res.json())
+      .then(data => {
+        setProfesionales(data);
+        aplicarFiltros(data, filters);
+      })
+      .catch(err => console.error('Error al cargar profesionales:', err));
+  }, []);
+
+  const aplicarFiltros = (data, filtros) => {
+    const { servicio, comuna, lugar, fecha } = filtros;
+
+    const hoy = new Date();
+
+    const resultado = data.filter((p) => {
+      const servicios = p.servicios || [];
+
+      const coincideServicio =
+        !servicio ||
+        servicios.some(s => s.toLowerCase().includes(servicio.toLowerCase())) ||
+        p.categoria?.toLowerCase().includes(servicio.toLowerCase());
+
+      const coincideComuna =
+        !comuna ||
+        p.comuna?.toLowerCase().includes(comuna.toLowerCase());
+
+      const coincideLugar =
+        !lugar ||
+        (p.locacion && p.locacion.toLowerCase() === lugar.toLowerCase());
+
+      const coincideFecha = (() => {
+        if (!fecha || !p.proxima_fecha) return true;
+
+        const fechaDisponible = new Date(p.proxima_fecha);
+
+        if (fecha === 'hoy') {
+          return (
+            fechaDisponible.getFullYear() === hoy.getFullYear() &&
+            fechaDisponible.getMonth() === hoy.getMonth() &&
+            fechaDisponible.getDate() === hoy.getDate()
+          );
+        }
+
+        if (fecha === '3dias') {
+          const tresDiasDespues = new Date();
+          tresDiasDespues.setDate(hoy.getDate() + 3);
+          return fechaDisponible >= hoy && fechaDisponible <= tresDiasDespues;
+        }
+
+        // Para "cualquier", siempre coincide
+        return true;
+      })();
+
+      return coincideServicio && coincideComuna && coincideLugar && coincideFecha;
+    });
+
+    setResultadosFiltrados(resultado);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(filters);
+    aplicarFiltros(profesionales, filters);
   };
 
   return (
@@ -48,9 +97,13 @@ const Search = () => {
           </form>
 
           <div className="search-results">
-            {providers.map((provider) => (
-              <ProviderCard key={provider.id} provider={provider} />
-            ))}
+            {resultadosFiltrados.length > 0 ? (
+              resultadosFiltrados.map((profesional) => (
+                <ProviderCard key={profesional.id} provider={profesional} />
+              ))
+            ) : (
+              <p>No se encontraron profesionales con los filtros seleccionados.</p>
+            )}
           </div>
         </div>
 
@@ -66,5 +119,3 @@ const Search = () => {
 };
 
 export default Search;
-
-

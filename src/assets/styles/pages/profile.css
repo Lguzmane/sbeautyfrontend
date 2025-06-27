@@ -476,8 +476,8 @@ textarea {
 
 .tabs {
   display: flex;
-  gap: 4px; /* casi pegados */
-  margin-bottom: 16px;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .tabs button {
@@ -501,93 +501,3 @@ textarea {
 }
 
 
-/* ========= historial  ========== */
-.history-item {
-  display: flex;
-  align-items: center;
-  background: white;
-  border: 1px solid var(--primary-color);
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin-bottom: 10px;
-  max-width: 300px; /* REDUCCIÓN DE ANCHO */
-  height: 80px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.history-photo {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-right: 15px;
-  flex-shrink: 0;
-}
-
-.history-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 13px;
-  line-height: 1.2;
-  color: var(--text-color);
-}
-
-.history-info h4 {
-  margin: 0;
-  font-size: 14px;
-  color: var(--highlight-color);
-}
-
-/* =========contenedor para historial con pestañas a la izquierda ========== */
-
-.history-grid {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  margin-left: 50px;
-  margin-top: 15px;
-}
-
-/* Botones verticales de historial */
-.history-tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.history-tabs button {
-  background-color: var(--highlight-color);
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background-color 0.2s;
-  gap: 6px;
-}
-
-.history-tabs button:hover {
-  background-color: var(--primary-color);
-}
-
-.history-tabs button.active {
-  background-color: var(--primary-color);
-}
-
-/* Icono de flecha (puedes reemplazarlo por un SVG si prefieres) */
-.history-tabs button span {
-  font-weight: bold;
-  font-size: 10px;
-}
-
-/* Columna de tarjetas */
-.history-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}

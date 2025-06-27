@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import serviciosData from '../data/services.json';
+import { AuthContext } from '../context/AuthContext.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const CreateService = () => {
+  const { createService } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     nombre: '',
     descripcion: '',
@@ -9,31 +14,40 @@ const CreateService = () => {
     duracion: '',
     categoria: '',
     tipoAtencion: 'Presencial',
-    consideraciones: '',
-    fotos: []
+    consideraciones: ''
   });
+
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const categorias = serviciosData.categorias.map(c => c.nombre);
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === 'fotos') {
-      setFormData({
-        ...formData,
-        fotos: Array.from(files)
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value
-      });
-    }
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí conectarás con la API en el Hito 3
-    console.log('Nuevo servicio:', formData);
+    setError('');
+    setSuccess('');
+
+    try {
+      const datos = {
+        ...formData,
+        fotos: [] // no se envían imágenes por ahora
+      };
+
+      await createService(datos);
+      setSuccess('✅ Servicio creado exitosamente');
+      setTimeout(() => navigate('/profile'), 1000);
+    } catch (err) {
+      console.error('❌ Error al crear servicio:', err.message);
+      setError(err.message || 'Error al crear servicio');
+    }
   };
 
   return (
@@ -105,7 +119,8 @@ const CreateService = () => {
             onChange={handleChange}
           />
 
-          <label htmlFor="fotos">Subir Fotografías (máx 3)</label>
+          {/* Campo eliminado temporalmente */}
+          {/* <label htmlFor="fotos">Subir Fotografías (máx 3)</label>
           <input
             type="file"
             name="fotos"
@@ -113,7 +128,10 @@ const CreateService = () => {
             accept="image/*"
             multiple
             onChange={handleChange}
-          />
+          /> */}
+
+          {error && <p className="error">{error}</p>}
+          {success && <p className="success">{success}</p>}
 
           <button type="submit" className="btn-primary">Guardar Servicio</button>
         </form>

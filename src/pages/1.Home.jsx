@@ -1,16 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ServiceFilters from '../components/ServiceFilters.jsx';
 import ServiceCard from '../components/ServiceCard.jsx';
 import imagenDefault from '../assets/images/imagendefault.png';
+import { getCategoryFromService } from '../utils/getCategoryFromService.js'; // ✅ nuevo import
 
 const Home = () => {
   const [filters, setFilters] = React.useState({
     servicio: '',
-    comuna: ''
+    comuna: '',
+    lugar: '',
+    fecha: ''
   });
 
-  // Simulación de servicios recomendados
+  const navigate = useNavigate();
+
+  const handleBuscar = (e) => {
+    e.preventDefault();
+    const query = new URLSearchParams(filters).toString();
+    navigate(`/search?${query}`);
+  };
+
+  const irACategoria = (servicio) => {
+    // Traduce "Manicure" → "Manicura y Pedicura", etc.
+    const categoriaReal = getCategoryFromService(servicio) || servicio;
+    const query = new URLSearchParams({ servicio: categoriaReal }).toString();
+    navigate(`/search?${query}`);
+  };
+
   const recommendedServices = [
     {
       id: 1,
@@ -40,14 +57,13 @@ const Home = () => {
 
   return (
     <section className="home">
-      {/* Hero principal */}
       <div className="home-hero">
         <h1 className="hero-title">Bienvenida a SBeauty</h1>
         <p className="hero-subtitle">Encuentra tu especialista en belleza</p>
 
-        <form className="home-search-form filters-home">
+        <form className="home-search-form filters-home" onSubmit={handleBuscar}>
           <ServiceFilters filters={filters} setFilters={setFilters} />
-          <Link to="/search" className="btn-primary">Buscar Servicios</Link>
+          <button type="submit" className="btn-primary">Buscar Servicios</button>
         </form>
       </div>
 
@@ -55,11 +71,11 @@ const Home = () => {
       <div className="home-categories">
         <h2 className="section-title">¿Qué necesitas hoy?</h2>
         <div className="category-list">
-          <div className="category-item">Manicure</div>
-          <div className="category-item">Pestañas</div>
-          <div className="category-item">Maquillaje</div>
-          <div className="category-item">Peluquería</div>
-          <div className="category-item">Depilación</div>
+          {['Manicura básica', 'Extensiones de pestañas', 'Maquillaje social', 'Corte de pelo mujer', 'Depilación cera'].map((servicio, i) => (
+            <div key={i} className="category-item" onClick={() => irACategoria(servicio)}>
+              {servicio}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -82,7 +98,7 @@ const Home = () => {
           <div className="home-providers-cta">
             <h2 className="section-title">¿Eres una profesional de la belleza?</h2>
             <p>Únete a SBeauty y comienza a ofrecer tus servicios en tu comuna. Llega a más clientas y administra tus reservas fácilmente.</p>
-            <Link to="/register" className="btn-primary">Quiero unirme</Link>
+            <a href="/register" className="btn-primary">Quiero unirme</a>
           </div>
         </div>
       </div>

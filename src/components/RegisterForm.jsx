@@ -1,41 +1,26 @@
 import React, { useState, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import clData from '../data/regions/cl.json';
-import servicesData from '../data/services.json'; 
+import servicesData from '../data/services.json';
+import { AuthContext } from '../context/AuthContext.jsx';
 
 const RegisterForm = () => {
-  const { register } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const regiones = clData.regiones.map(r => r.nombre);
-  const categorias = servicesData.categorias.map(cat => cat.nombre); 
+  const categorias = servicesData.categorias.map(cat => cat.nombre);
 
   const [comunasDisponibles, setComunasDisponibles] = useState([]);
-
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellidoPaterno: '',
-    apellidoMaterno: '',
-    rut: '',
-    email: '',
-    telefono: '',
-    password: '',
-    confirmPassword: '',
-    region: '',
-    comuna: '',
-    tipoUsuario: 'Cliente',
-    experiencia: '',
-    certificaciones: '',
-    categoria: '',
-    otraCategoria: ''
+    nombre: '', apellidoPaterno: '', apellidoMaterno: '', rut: '',
+    email: '', telefono: '', password: '', confirmPassword: '',
+    region: '', comuna: '', tipoUsuario: 'Cliente',
+    experiencia: '', certificaciones: '', categoria: '', otraCategoria: ''
   });
-
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     if (name === 'region') {
       const regionSeleccionada = clData.regiones.find(r => r.nombre === value);
       setComunasDisponibles(regionSeleccionada ? regionSeleccionada.comunas : []);
@@ -45,14 +30,15 @@ const RegisterForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
     const {
-      nombre, apellidoPaterno, apellidoMaterno, email, telefono, password, confirmPassword, region, comuna, categoria, otraCategoria, tipoUsuario
+      nombre, apellidoPaterno, apellidoMaterno, email, telefono,
+      password, confirmPassword, region, comuna,
+      categoria, otraCategoria, tipoUsuario, rut
     } = formData;
 
-    if (!nombre.trim() || !apellidoPaterno.trim() || !apellidoMaterno.trim() || !email.trim() || !telefono.trim() || !password.trim() || !confirmPassword.trim() || !region.trim() || !comuna.trim()) {
+    if (!nombre || !apellidoPaterno || !apellidoMaterno || !email || !telefono || !password || !confirmPassword || !region || !comuna) {
       setError('Por favor completa todos los campos obligatorios.');
       return;
     }
@@ -79,10 +65,45 @@ const RegisterForm = () => {
 
     setError('');
     const categoriaFinal = categoria === 'Otra' ? otraCategoria : categoria;
-    const datosFinales = { ...formData, categoria: categoriaFinal };
-    register(datosFinales);
-    console.log('Formulario enviado:', datosFinales);
-    navigate('/');
+    const datosFinales = {
+      nombre,
+      apellido_paterno: apellidoPaterno,
+      apellido_materno: apellidoMaterno,
+      rut,
+      email,
+      telefono,
+      password,
+      region,
+      comuna,
+      rol: tipoUsuario,
+      categoria: categoriaFinal,
+      experiencia: formData.experiencia,
+      certificaciones: formData.certificaciones
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datosFinales)
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.error || 'Error en el registro.');
+        return;
+      }
+
+      // Guardar token y usuario si se desea
+localStorage.setItem('token', data.token);
+localStorage.setItem('user', JSON.stringify(data.user));
+setUser(data.user); 
+navigate('/');
+
+    } catch (err) {
+      console.error('Error en el registro:', err);
+      setError('No se pudo conectar con el servidor.');
+    }
   };
 
   return (

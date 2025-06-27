@@ -165,8 +165,10 @@
   font-weight: bold;
 }
 
+.time-slot.bloqueado,
 .time-slot.reserved {
-  background: var(--reserved-color);
-  color: #2e7d32;
+  background-color: #dcd3e5;
+  color: #5c5470;
+  border: 1px dashed #b9aacd;
   font-weight: bold;
 }

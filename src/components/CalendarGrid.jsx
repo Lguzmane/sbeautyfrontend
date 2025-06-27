@@ -8,6 +8,8 @@ const getDayAbbreviation = (date) =>
 const formatDate = (date) =>
   `${date.getDate()} ${date.toLocaleDateString('es-ES', { month: 'short' })}`;
 
+const getDateISO = (date) => date.toISOString().split('T')[0];
+
 const generateTimeSlots = (start, end, interval) => {
   const slots = [];
   let current = start * 60;
@@ -15,7 +17,8 @@ const generateTimeSlots = (start, end, interval) => {
   while (current < endTime) {
     const hours = Math.floor(current / 60);
     const minutes = current % 60;
-    slots.push(`${hours}:${minutes === 0 ? '00' : minutes}`);
+    const timeStr = `${hours}:${minutes.toString().padStart(2, '0')}`;
+    slots.push(timeStr);
     current += interval;
   }
   return slots;
@@ -24,7 +27,6 @@ const generateTimeSlots = (start, end, interval) => {
 const CalendarGrid = ({
   reservations = [],
   onBlockSelect,
-  onDaySelect,
   selectedBlocks = [],
   calendarData = {}
 }) => {
@@ -46,7 +48,12 @@ const CalendarGrid = ({
     : generateTimeSlots(12, 18, 30);
 
   const isReserved = (day, time) =>
-    reservations.some((r) => r.day === day && r.time === time);
+    reservations.some((r) => {
+      const fecha = new Date(r.fecha);
+      const rDay = fecha.toISOString().split('T')[0];
+      const rTime = fecha.toTimeString().slice(0, 5);
+      return rDay === day && rTime === time;
+    });
 
   const handlePrev = () => {
     const newDate = new Date(currentDate);
@@ -91,7 +98,7 @@ const CalendarGrid = ({
         </button>
         <div className="days-container">
           {nextDays.map((date, idx) => {
-            const dayStr = date.toDateString();
+            const dayStr = getDateISO(date);
             const isSelectedDay = selectedBlocks.some((b) => b.day === dayStr);
             return (
               <div
@@ -115,16 +122,17 @@ const CalendarGrid = ({
         {timeSlots.map((time, idx) => (
           <div key={idx} className="time-row">
             {nextDays.map((date, j) => {
-              const dayStr = date.toDateString();
+              const dayStr = getDateISO(date);
               const isSelected = selectedBlocks.some(
                 (b) => b.day === dayStr && b.time === time
               );
               const motivo = calendarData[dayStr]?.[time];
+              const bloqueado = motivo === 'Bloqueado';
 
               return (
                 <div
                   key={j}
-                  className={`time-slot ${isReserved(dayStr, time) ? 'reserved' : ''} ${isSelected ? 'selected' : ''}`}
+                  className={`time-slot ${bloqueado ? 'bloqueado' : ''} ${isReserved(dayStr, time) ? 'reserved' : ''} ${isSelected ? 'selected' : ''}`}
                   onClick={() => onBlockSelect(dayStr, time, timeSlots, reservations)}
                 >
                   {motivo ? motivo : time}
