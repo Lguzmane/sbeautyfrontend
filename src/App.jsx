@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Importar los componentes
 import Header from './components/header.jsx';
-import Footer from './components/Footer.jsx';
+import Footer from './components/footer.jsx';
 
 // Importar las páginas
 import Home from './pages/1.Home.jsx';
