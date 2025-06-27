@@ -76,7 +76,7 @@ const Booking = () => {
         metodo_pago: 'Transferencia'
       };
 
-      const reservaCreada = await fetchWithToken('/api/reservas', {
+      const reservaCreada = await fetchWithToken('https://sbeautybackend.onrender.com/api/reservas', {
         method: 'POST',
         body: JSON.stringify(reservaData)
       });
