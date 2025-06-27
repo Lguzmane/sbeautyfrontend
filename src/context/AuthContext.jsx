@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
   // Login real
   const login = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:3000/api/auth/login', {
+      const response = await fetch('https://sbeautybackend.onrender.com/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
   // Registro real
   const register = async (formData) => {
     try {
-      const response = await fetch('http://localhost:3000/api/auth/register', {
+      const response = await fetch('https://sbeautybackend.onrender.com/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -75,7 +75,7 @@ const AuthProvider = ({ children }) => {
   const getProfile = async () => {
     const token = localStorage.getItem('token');
 
-    const response = await fetch('http://localhost:3000/api/auth/profile', {
+    const response = await fetch('https://sbeautybackend.onrender.com/api/auth/profile', {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -96,7 +96,7 @@ const AuthProvider = ({ children }) => {
   const updateProfile = async (id, data) => {
     const token = localStorage.getItem('token');
 
-    const response = await fetch(`http://localhost:3000/api/auth/usuarios/${id}`, {
+    const response = await fetch(`https://sbeautybackend.onrender.com/api/auth/usuarios/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ const AuthProvider = ({ children }) => {
   const createService = async (formData) => {
     const token = localStorage.getItem('token');
 
-    const response = await fetch('http://localhost:3000/api/servicios', {
+    const response = await fetch('https://sbeautybackend.onrender.com/api/servicios', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`

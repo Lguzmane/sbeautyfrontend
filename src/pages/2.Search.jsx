@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import ProviderCard from '../components/ProviderCard.jsx';
 import ServiceFilters from '../components/ServiceFilters.jsx';
 
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = 'https://sbeautybackend.onrender.com/api';
 
 const Search = () => {
   const location = useLocation();

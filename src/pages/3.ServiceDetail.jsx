@@ -20,7 +20,7 @@ const ServiceDetail = () => {
         setLoading(true);
         setError(null);
         
-        const response = await fetch(`http://localhost:3000/api/servicios/${id}`);
+        const response = await fetch(`https://sbeautybackend.onrender.com/api/servicios/${id}`);
         const data = await response.json();
 
         if (!response.ok) {

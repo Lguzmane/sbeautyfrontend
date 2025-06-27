@@ -40,7 +40,7 @@ const Profile = () => {
         let perfil = null;
 
         if (profileId) {
-          perfil = await fetchWithToken(`http://localhost:3000/api/usuarios/${profileId}`);
+          perfil = await fetchWithToken(`https://sbeautybackend.onrender.com/api/usuarios/${profileId}`);
           console.log('👤 Perfil ajeno cargado:', perfil);
         } else {
           perfil = await getProfile();
@@ -52,9 +52,9 @@ const Profile = () => {
         let favoritos = { favoritos: [] };
 
         if (!profileId) {
-          historialCliente = await fetchWithToken('http://localhost:3000/api/reservas/cliente/historial');
-          historialProfesional = await fetchWithToken('http://localhost:3000/api/reservas/profesional/historial');
-          favoritos = await fetchWithToken('http://localhost:3000/api/favoritos');
+          historialCliente = await fetchWithToken('https://sbeautybackend.onrender.com/api/reservas/cliente/historial');
+          historialProfesional = await fetchWithToken('https://sbeautybackend.onrender.com/api/reservas/profesional/historial');
+          favoritos = await fetchWithToken('https://sbeautybackend.onrender.com/api/favoritos');
         }
 
         const datosPerfil = {
